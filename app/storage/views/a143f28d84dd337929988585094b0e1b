@@ -1,0 +1,52 @@
+<?php
+$total_income = 0;
+foreach($persons as $item){
+    $total_income += $item->cheq_amount + $item->aid_amount;
+}
+?>
+<p>
+<ul>
+    <li> جمع مبلغ کمک ها:<?php echo number_format($total_income); ?>  تومان </li>
+    <li> تعداد مددجویان: <?php echo $persons->count(); ?> نفر </li>
+</ul>
+<div class="pagedetail-list">
+    <h3> استان ها : </h3>
+    <ul>
+        <?php foreach($info_states as $item): ?>
+            <?php if($item['count']>0): ?>
+                 <li><?php echo $item['title']; ?> : <?php echo $item['count']; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<div class="pagedetail-list">
+    <h3> نوع بیمه ها در این نوع کمک: </h3>
+    <ul>
+        <?php foreach($info_insurances as $item): ?>
+            <?php if($item['count']>0): ?>
+                <li><?php echo $item['title']; ?> : <?php echo $item['count']; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<div class="pagedetail-list">
+    <h3> نوع کمک: </h3>
+    <ul>
+        <?php foreach($info_incomes as $item): ?>
+            <?php if($item['count']>0): ?>
+                <li><?php echo $item['title']; ?> : <?php echo $item['count']; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<div class="pagedetail-list">
+    <h3> نوع درآمد: </h3>
+    <ul>
+        <?php foreach($info_aids as $item): ?>
+            <?php if($item['count']>0): ?>
+                <li><?php echo $item['title']; ?> : <?php echo $item['count']; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+</div>
+</p>

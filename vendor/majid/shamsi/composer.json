@@ -1,0 +1,22 @@
+{
+    "name": "majid/shamsi",
+    "keywords": ["laravel", "shamsi", "jalali","hejri", "date", "time","iran","farsi","persian","hijri"],
+    "description": "laravel 4.2 package for shamsi date",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Majid",
+            "email": "majid8911303@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Majid\\Shamsi": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

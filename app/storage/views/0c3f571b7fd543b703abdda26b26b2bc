@@ -1,0 +1,4 @@
+<?php foreach($items as $item): ?>
+    <?php echo State::find($item->state_id)->title; ?> : <?php echo $item->prcnt; ?>
+
+<?php endforeach; ?>

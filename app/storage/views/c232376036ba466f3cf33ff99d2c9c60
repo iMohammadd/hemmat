@@ -1,0 +1,43 @@
+<?php foreach($persons as $item): ?>
+    <div class="sr-tumb">
+        <img src="<?php echo asset($item->document); ?>" />
+        <div class="search-result">
+            <div class="sr-name">
+                <h3><?php echo $item->report_id; ?></h3>
+                <h3>نام مددجو: <?php echo $item->name; ?> </h3>
+                <h3>شماره ملی: <?php echo $item->person_code; ?> </h3>
+                <h3>تاریخ: <?php echo jDate::forge($item->date)->format('Y/m/d'); ?></h3>
+                <h3> <a onClick="javascript:window.open('#','print','status=yes,scrollbars=yes,toolbar=no,menubar=yes,location=no ,width=500px,height=500px')" href="javascript:void(0)" class="btn btn-default" ><span class="fa fa-print"></span> چاپ</a> </h3>
+                <h3> <?php echo link_to_route('edit_person','ویرایش',['id'=>$item->id]); ?> </h3>
+            </div>
+            <div class="sr-detail">
+                <ul>
+                    <li> استان: <?php echo $item->state->title; ?> </li>
+                    <li> نوع کمک: <?php echo $item->aid->title; ?> </li>
+                    <li> نوع بیمه: <?php echo $item->insurance->title; ?> </li>
+                    <li> نوع درآمد: <?php echo $item->income->title; ?> </li>
+                    <?php if($item->cheq_amount>0): ?>
+                        <li> مبلغ چک: <?php echo number_format($item->cheq_amount); ?> </li>
+                        <li> شماره چک: <?php echo $item->cheq_number; ?> </li>
+                    <?php endif; ?>
+                    <?php if($item->aid_amount): ?>
+                        <li> مبلغ نقد: <?php echo number_format($item->aid_amount); ?> </li>
+                    <?php endif; ?>
+                    <li> کل:<?php echo number_format($item->cheq_amount+$item->aid_amount); ?> </li>
+
+                </ul>
+
+                <div class="sr-addres">
+                    آدرس: <?php echo $item->address; ?>
+
+                </div>
+                <div class="sr-tell">
+                    <p>
+                        تلفن: <?php echo $item->tel; ?>
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+<?php endforeach; ?>

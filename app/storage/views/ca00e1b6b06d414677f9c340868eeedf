@@ -1,0 +1,10 @@
+<ul>
+    <li><?php echo link_to_route('main', 'جستجو'); ?></li>
+    <li><?php echo link_to_route('add_person', 'افزودن مددجو'); ?></li>
+    <li><?php echo link_to_route('states', 'استانها'); ?></li>
+    <li><?php echo link_to_route('aids', 'کمکها'); ?></li>
+    <li><?php echo link_to_route('incomes', 'درآمدها'); ?></li>
+    <li><?php echo link_to_route('insurances', 'بیمه ها'); ?></li>
+    <li><?php echo link_to_route('change_password', 'تغییر کلمه عبور'); ?></li>
+    <li><?php echo link_to_route('logout', 'خروج'); ?></li>
+</ul>

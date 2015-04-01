@@ -1,0 +1,27 @@
+<article class="leftsection">
+    <div class="leftsection-title">
+        <h3 class="leftsection-title">
+            &nbsp; افزودن متغیر
+        </h3>
+    </div>
+
+    <div class="lscontent">
+        <div class="result">
+            <?php echo Form::open(); ?>
+
+            <?php echo Form::text('title',null,['style'=>"margin:15px 5px 0 5px; width:450px;",'placeholder'=>"نام متغیر جدید را وارد کنید"  ]); ?>
+
+            <?php echo Form::submit('اضافه کن',['style'=>"margin:15px 5px 5px 5px;"]); ?>
+
+            <?php echo Form::close(); ?>
+
+
+        </div>
+        <?php foreach($term as $item): ?>
+            <div class="result">
+                <h2 class="Var"><?php echo $item->title; ?></h2>
+            </div>
+        <?php endforeach; ?>
+
+    </div>
+</article>

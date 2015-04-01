@@ -1,0 +1,28 @@
+<?php $__env->startSection('title'); ?>
+    صفحه نخست سیستم
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('head'); ?>
+    <link rel="stylesheet" href="<?php echo asset('css/calendar-blue.css'); ?>">
+    <script src="<?php echo asset('js/jalali.js'); ?>"></script>
+    <script src="<?php echo asset('js/calendar.js'); ?>"></script>
+    <script src="<?php echo asset('js/calendar-setup.js'); ?>"></script>
+    <script src="<?php echo asset('js/calendar-fa.js'); ?>"></script>
+    <script>
+    $(document).ready(function() {
+    $(".topnav").accordion({
+    accordion:false,
+    speed: 500,
+    closedSign: '',
+    openedSign: ''
+    });
+    });
+
+    </script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('right'); ?>
+    <?php echo $__env->make('tags', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('left'); ?>
+    <?php echo $__env->make('person_edit_form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
