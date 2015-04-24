@@ -62,6 +62,8 @@ class PersonController extends \BaseController {
 			$person->date = $date;
 
 			$person->save();
+
+			Session::flash('submit', 'true');
 			return Redirect::route('add_person');
 		}
 	}
@@ -116,7 +118,40 @@ class PersonController extends \BaseController {
 		$insurances = Insurance::all();
 		$incomes = Income::all();
 		$persons = Person::where('date','>=', $start)->where('date','<=',$end)->paginate(10);
-		return View::make('person.show')->with(['persons'=>$persons, 'term'=>$term, 'states'=>$states, 'aids'=>$aids, 'insurances'=>$insurances, 'incomes'=>$incomes]);
+
+		$info_states = null;
+		foreach($states as $item){
+			$info_states[] = [
+				'title'=>$item->title,
+				'count'=> Person::where('state_id','=', $item->id)->where('date','>=', $start)->where('date','<=',$end)->count()
+			];
+		}
+
+		$info_insurances = null;
+		foreach($insurances as $item) {
+			$info_insurances[] = [
+				'title' => $item->title,
+				'count' => Person::where('insurance_id','=', $item->id)->where('date','>=', $start)->where('date','<=',$end)->count()
+			];
+		}
+
+		$info_incomes = null;
+		foreach($incomes as $item) {
+			$info_incomes[] = [
+				'title' => $item->title,
+				'count' => Person::where('income_id', '=', $item->id)->where('date','>=', $start)->where('date','<=',$end)->count()
+			];
+		}
+
+		$info_aids = null;
+		foreach($aids as $item) {
+			$info_aids[] = [
+				'title' => $item->title,
+				'count' => Person::where('aid_id', '=', $item->id)->where('date','>=', $start)->where('date','<=',$end)->count()
+			];
+		}
+
+		return View::make('person.show')->with(['persons'=>$persons, 'term'=>$term, 'states'=>$states, 'aids'=>$aids, 'insurances'=>$insurances, 'incomes'=>$incomes, 'info_states'=>$info_states, 'info_incomes'=>$info_incomes, 'info_insurances'=>$info_insurances, 'info_aids'=>$info_aids]);
 	}
 
 	/**

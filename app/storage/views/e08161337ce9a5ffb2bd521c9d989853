@@ -3,6 +3,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('right'); ?>
     <?php echo $__env->make('tags', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('stats', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('left'); ?>
     <?php echo $__env->make('persons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

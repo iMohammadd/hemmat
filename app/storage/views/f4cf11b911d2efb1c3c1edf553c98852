@@ -8,23 +8,38 @@
     <div class="lscontent">
 
         <fieldset>
+            <?php if(Session::has('submit')): ?>
+                <div class="informations">مددجو با موفقیت در سامانه ثبت شد</div>
+            <?php endif; ?>
             <legend> مشخصات فردی مددجو </legend>
             <?php echo Form::open(['files'=>true]); ?>
 
             <?php echo Form::text('name',null,['placeholder'=>'نام و نام خانوادگی مددجو', 'style'=>'width:550px']); ?>
 
+            <?php echo $errors->first('name', '<div class="informations">:message</div>'); ?>
+
             <?php echo Form::text('person_code',null,['placeholder'=>"شماره ملی مددجو", 'style'=>'width:550px']); ?>
+
+            <?php echo $errors->first('person_code', '<div class="informations">:message</div>'); ?>
 
                 <?php echo Form::text('report_id',null,['placeholder'=>"شماره گزارش درج شده در سایت", 'style'=>'width:550px']); ?>
 
+            <?php echo $errors->first('report_id', '<div class="informations">:message</div>'); ?>
+
                 <?php echo Form::text('tel',null,['placeholder'=>"شماره تماس", 'style'=>'width:550px']); ?>
 
+            <?php echo $errors->first('tel', '<div class="informations">:message</div>'); ?>
+
                 <?php echo Form::text('address',null,['placeholder'=>"آدرس", 'style'=>'width:550px']); ?>
+
+            <?php echo $errors->first('address', '<div class="informations">:message</div>'); ?>
 
         </fieldset>
         <fieldset>
             <legend> تاریخ کمک </legend>
                 <?php echo Form::text('date',null,['placeholder'=>"انتخاب از تقویم", 'style'=>'width:550px', 'id'=>'date']); ?>
+
+            <?php echo $errors->first('date', '<div class="informations">:message</div>'); ?>
 
                 <script>
                         Calendar.setup({
@@ -58,6 +73,8 @@
             <legend> تصویر سند </legend>
             <?php echo Form::file('document',['style'=>'width:550px']); ?>
 
+            <?php echo $errors->first('document', '<div class="informations">:message</div>'); ?>
+
         </fieldset>
         <fieldset>
             <legend> اطلاعات مالی </legend>
@@ -67,13 +84,19 @@
 
             <?php echo Form::text('aid_amount','0',['style'=>'width:550px', 'placeholder'=>'مبلغ نقدی']); ?>
 
+            <?php echo $errors->first('aid_amount', '<div class="informations">:message</div>'); ?>
+
             <?php echo Form::label('cheq_amount','مبلغ چک',['style'=>'padding-right:20px; float:right']); ?>
 
             <?php echo Form::text('cheq_amount','0',['style'=>'width:550px', 'placeholder'=>'مبلغ چک']); ?>
 
+            <?php echo $errors->first('cheq_amount', '<div class="informations">:message</div>'); ?>
+
             <?php echo Form::label('cheq_number','شماره چک',['style'=>'padding-right:20px; float:right']); ?>
 
             <?php echo Form::text('cheq_number','0',['style'=>'width:550px', 'placeholder'=>'شماره چک']); ?>
+
+            <?php echo $errors->first('cheq_number', '<div class="informations">:message</div>'); ?>
 
                 <?php echo Form::submit('ارسال سند',['style'=>'width:572px']); ?>
 
